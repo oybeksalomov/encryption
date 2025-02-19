@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shifrlash</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="second.js" defer></script>
+</head>
+<body>
+<div class="container">
+    <div class="titleWrapper">
+        <h1 class="title">Shifrlash</h1>
+    </div>
+
+    <div class="mainContentOuter">
+        <div class="fileInputWrapper">
+            <label class="fileInputLabel" for="fileInput">File yuklang (.txt)</label>
+            <input class="fileInput" type="file" id="fileInput" accept=".txt">
+        </div>
+
+        <div class="fileTextField">
+            <h3 class="fieldTitle">Fayl matni</h3>
+            <div class="fileTextWrapper">
+                <pre id="outputText"></pre>
+            </div>
+        </div>
+
+        <div class="encryptButtonWrapper">
+            <div class="secretKeyWrapper">
+                <label class="secretKeyLabel" for="secretKeyEncrypt">Maxfiy kalit:</label>
+                <input class="secretKeyInput" placeholder="Maxfiy kalit" type="text" id="secretKeyEncrypt">
+            </div>
+            <button onclick="encryptAction()" class="encryptButton">Shifrlash</button>
+        </div>
+
+        <div class="fileTextField">
+            <h3 class="fieldTitle">Shifrlangan matn</h3>
+            <div class="encryptedTextWrapper">
+                <p id="encryptedText"></p>
+            </div>
+        </div>
+
+        <div class="encryptButtonWrapper">
+            <div class="secretKeyWrapper">
+                <label class="secretKeyLabel" for="secretKeyDecrypt">Maxfiy kalit:</label>
+                <input class="secretKeyInput" placeholder="Maxfiy kalit" type="text" id="secretKeyDecrypt">
+            </div>
+            <button onclick="decryptAction()" class="encryptButton">Shifrni ochish</button>
+        </div>
+
+        <div class="fileTextField">
+            <h3 class="fieldTitle">Shifr ochilgan matn</h3>
+            <div class="fileTextWrapper">
+                <pre id="decryptedText"></pre>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
