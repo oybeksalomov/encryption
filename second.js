@@ -18,6 +18,16 @@ fileInput.addEventListener("change", (event) => {
 
 const codeToBytes = (text) => new TextEncoder().encode(text)
 
+// Bu 32 bitlik kod hosil qiladi
+function hashSecretKey(key) {
+    let hash = 0
+    for (let i = 0; i < key.length; i++) {
+        hash ^= key.charCodeAt(i)
+        hash = (hash << 5) - hash
+    }
+    return (hash >>> 0).toString(16)
+}
+
 // Arifmetik amallar orqali shifrlash
 const encryptText = (text, key) => {
     let encoder = new TextEncoder()
@@ -47,7 +57,8 @@ const encryptAction = () => {
         return
     }
 
-    encryptedText.textContent = encryptText(outputText.textContent, codeToBytes(secretKeyEncrypt.value))
+    let secretKeyHex = hashSecretKey(secretKeyEncrypt.value)
+    encryptedText.textContent = encryptText(outputText.textContent, codeToBytes(secretKeyHex))
 }
 const decryptAction = () => {
     if (!secretKeyDecrypt.value) {
@@ -59,5 +70,6 @@ const decryptAction = () => {
         return
     }
 
-    decryptedText.textContent = decryptText(encryptedText.textContent, codeToBytes(secretKeyDecrypt.value))
+    let secretKeyHex = hashSecretKey(secretKeyDecrypt.value)
+    decryptedText.textContent = decryptText(encryptedText.textContent, codeToBytes(secretKeyHex))
 }
